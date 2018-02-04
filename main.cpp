@@ -244,7 +244,7 @@ void encryptAndFillData(FILE *file, Elf *elf, Elf_Scn *sgxtext,
     EnclaveData encData = {0};
     encData.Encrypted = true;
 
-    std::copy(key, key + sizeof(key), encData.CryptoKey);
+    std::copy(std::begin(key), std::end(key), encData.CryptoKey);
 
     const int maxNumEncRegions =
         sizeof(encData.EncryptedRegions) / sizeof(encData.EncryptedRegions[0]);
